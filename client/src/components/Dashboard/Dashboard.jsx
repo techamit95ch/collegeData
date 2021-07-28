@@ -24,7 +24,7 @@ export const Dashboard = ({ open, collegeData, setCollegeData }) => {
 
       <Container
         maxWidth="lg"
-        className={open === true ? classes.pageShift : classes.page}
+        className={classes.page}
       >
         <Grid
           container
@@ -34,7 +34,7 @@ export const Dashboard = ({ open, collegeData, setCollegeData }) => {
         >
           {/* <Grid item xs={12}> */}
 
-          <Grid item xs={6} sm={6}>
+          <Grid item xs={12} sm={6}>
             {/* <Paper className={classes.paper}> */}
               <Pie
                 filterBy="state"
@@ -45,20 +45,20 @@ export const Dashboard = ({ open, collegeData, setCollegeData }) => {
           </Grid>
           {/* <Divider type="vertical" /> */}
 
-          <Grid item xs={6} sm={6}>
+          <Grid item xs={12} sm={6}>
             {/* <Paper className={classes.paper}> */}
               <Pie
                 filterBy="course"
                 collegeData={collegeData}
                 setCollegeData={setCollegeData}
               />
-            {/* </Paper> */}
+            {/* </Paper> data ={collegeData}*/}
           </Grid>
           {!collegeData ? (
           <></>
         ) : (
           <>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={12}>
               <Tables data ={collegeData}/>
             </Grid>
           </>

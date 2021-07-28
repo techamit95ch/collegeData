@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   appBar: {
-    backgroundColor: "#24292e",
+    backgroundColor: "#fff",
     dispaly: "flex",
     justifyContent: "space-between",
     // position: 'sticky',
@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     display: "none",
-    color:'#fff',
+    color:'#3170ec',
     [theme.breakpoints.up("sm")]: {
       display: "block",
     },
@@ -116,31 +116,17 @@ export default function TopBar({ open, setOpen, setSearchText, searchText }) {
     <div className={classes.root}>
       <AppBar
         className={
-          //   clsx(classes.appBar, {[classes.appBarShift]: open,})
-          open === true ? classes.appBarShift : classes.appBar
+          classes.appBar
         }
       >
         <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, {
-              [classes.hide]: open,
-            })}
-          >
-            <MenuIcon />
-          </IconButton>
+          
 
-          {open === false ? (
+         
             <Typography className={classes.title} variant="h6" noWrap>
               College Data
             </Typography>
-          ) : (
-            ""
-          )}
-
+         
           
         </Toolbar>
       </AppBar>

@@ -22,7 +22,7 @@ import ViewListRoundedIcon from "@material-ui/icons/ViewListRounded";
 import TopBar from "../topBar/TopBar";
 import { Link } from "react-router-dom";
 import { useHistory, useLocation } from "react-router-dom"; // version 5.2.0
-
+import HomeIcon from '@material-ui/icons/Home';
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -103,59 +103,9 @@ export default function SideBar({ Page, collegeData, setCollegeData }) {
     <>
       <CssBaseline />
       <TopBar
-        open={open}
-        setOpen={setOpen}
-        setSearchText={setSearchText}
-        searchText={searchText}
+        
       />
-      <Drawer
-        variant="permanent"
-        className={clsx(classes.drawer, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open,
-        })}
-        classes={{
-          paper: clsx({
-            [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open,
-          }),
-        }}
-      >
-        <div className={classes.toolbar}>
-          <Typography className={classes.title} variant="h6" noWrap>
-            College Data
-          </Typography>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
-          </IconButton>
-        </div>
-
-        <Divider />
-        <List>
-          <ListItem button key={"Home"}>
-            <Link
-              to={`/`}
-              style={{ color: "#343a40", textDecoration: "inherit" }}
-            >
-              <ListItemIcon>
-                {" "}
-                <ViewListRoundedIcon />
-              </ListItemIcon>
-            </Link>
-            <Link
-              to={`/`}
-              style={{ color: "#343a40", textDecoration: "inherit" }}
-            >
-              {" "}
-              <ListItemText primary={"Home"} />{" "}
-            </Link>
-          </ListItem>
-        </List>
-      </Drawer>
+      
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Typography paragraph>
