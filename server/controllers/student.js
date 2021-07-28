@@ -28,7 +28,7 @@ export const createStudent = async (req, res) => {
         .json({ "Already Exists data length:": students.length });
     } else {
       const colleges = await College.find({}, { _id: 1 });
-      console.log(colleges);
+      // console.log(colleges);
       let collegeId = "";
 
       if (colleges.length === 0) {
@@ -47,15 +47,14 @@ export const createStudent = async (req, res) => {
         const newStudent = new Student({
           name: faker.name.findName(),
           yearOfBatch: faker.date.past(4),
-          collegeId: collegeId,
-          state: faker.address.state(),
-          country: faker.address.country(),
-          noOfStudents: faker.random.number(1024),
+          collegeId: collegeId,         
           skills: skills,
         });
 
         try {
           await newStudent.save();
+          const coll = await College.findById(collegeId);
+          await College.findByIdAndUpdate(collegeId, {noOfStudents : coll.noOfStudents + 1 },{new:true})
           counter++;
         } catch (error) {
           res.status(409).json({ message: error.message });
