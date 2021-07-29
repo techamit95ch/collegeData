@@ -158,7 +158,7 @@ export const Tables = ({ data }) => {
         )}
       />
       <Drawer
-        width={480}
+        width={300}
         placement="right"
         closable={false}
         onClose={() => setDrawer(false)}
@@ -222,7 +222,7 @@ export const Tables = ({ data }) => {
         </Row>
       </Drawer>
       <Drawer
-        width={480}
+        width={360}
         placement="left"
         closable={false}
         onClose={() => setCDrawer(false)}
