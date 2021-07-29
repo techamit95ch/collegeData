@@ -12,9 +12,9 @@ import {
   Divider,
   Col,
   Row,
-  PageHeader
+  PageHeader,
 } from "antd";
-import { DownloadOutlined } from "@ant-design/icons";
+import { DownloadOutlined, CloseOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
 import { CSVLink, CSVDownload } from "react-csv";
 import { makeStyles } from "@material-ui/core/styles";
@@ -86,7 +86,6 @@ export const Tables = ({ data }) => {
     },
     {
       title: "Students",
-      fixed: "right",
       dataIndex: "_id",
       render: (_id) => (
         <span>
@@ -119,9 +118,9 @@ export const Tables = ({ data }) => {
     <div>
       <Divider />
       <Table
-        loading={ !data? true: false }
+        loading={!data ? true : false}
         columns={columns}
-        dataSource={data?data.data:null}
+        dataSource={data ? data.data : null}
         pagination={{ pageSize: 20 }}
         scroll={{ x: 800, y: 400 }}
         title={() => (
@@ -167,12 +166,15 @@ export const Tables = ({ data }) => {
       >
         <Row>
           <Divider />
-          <Col span={24}>
-            {" "}
+          <Divider />
+          <Col span={3}>
+          <CloseOutlined onClick={() => setDrawer(false)}/>
+          </Col>
+          <Col span={21}>
             <Title level={5} className={classes.headTitle} type="success">
               {stData ? stData.name.toUpperCase() : null}
-            </Title>{" "}
-          </Col>
+            </Title>
+            </Col>
           <Divider />
           <Col span={12}>
             <Text strong type="secondary">
@@ -181,7 +183,7 @@ export const Tables = ({ data }) => {
             </Text>{" "}
           </Col>{" "}
           <Col span={12}>
-            <Text  type="secondary">
+            <Text type="secondary">
               {" "}
               {stData
                 ? new Date(stData.yearOfBatch).toLocaleDateString(
@@ -227,15 +229,17 @@ export const Tables = ({ data }) => {
         visible={cDrawer}
       >
         <Row>
-          <Divider />
+          <Divider /> <Divider />
           {data.data.map((item) => {
             return item._id === cData ? (
               <>
-                <Col span={24}>
+                <Col span={21}>
                   {" "}
                   <Title level={5} className={classes.headTitle} type="danger">
                     {item ? item.name.toUpperCase() + ` 's College` : null}
-                  </Title>{" "}
+                  </Title>
+                  </Col><Col span={3}>
+                  <CloseOutlined onClick={() => setCDrawer(false)}/>
                 </Col>
                 <Divider />
                 <Col span={12}>
@@ -245,7 +249,7 @@ export const Tables = ({ data }) => {
                   </Text>{" "}
                 </Col>{" "}
                 <Col span={12}>
-                  <Text  type="secondary">
+                  <Text type="secondary">
                     {" "}
                     {item
                       ? new Date(item.yearFounded).toLocaleDateString(
@@ -262,7 +266,7 @@ export const Tables = ({ data }) => {
                   </Text>{" "}
                 </Col>{" "}
                 <Col span={12}>
-                  <Text  type="secondary">
+                  <Text type="secondary">
                     {" "}
                     {item ? item.country.toUpperCase() : null}{" "}
                   </Text>
@@ -274,7 +278,7 @@ export const Tables = ({ data }) => {
                   </Text>{" "}
                 </Col>{" "}
                 <Col span={12}>
-                  <Text  type="secondary">
+                  <Text type="secondary">
                     {item ? item.state.toUpperCase() : null}
                   </Text>
                 </Col>
@@ -286,7 +290,7 @@ export const Tables = ({ data }) => {
                 </Col>{" "}
                 <Col span={12}>
                   {" "}
-                  <Text  type="secondary">
+                  <Text type="secondary">
                     {item ? item.city.toUpperCase() : null}{" "}
                   </Text>
                 </Col>
